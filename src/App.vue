@@ -4,7 +4,11 @@
     <main class="product-page">
       <div class="container">
         <ProductList :products="products"/>
-        <Pagination />
+        <Pagination
+          :currentPage="currentPage"
+          :perPage="productsPerPage"
+          :totalProducts="totalProducts"
+          @changePage="changePage"/>
       </div>
     </main>
     <Footer />
@@ -28,23 +32,40 @@ export default {
   },
   data() {
     return {
-      products: []
+      products: [],
+      totalProducts: 63,
+      currentPage: 1,
+      productsPerPage: 6,
+    }
+  },
+  methods: {
+    changePage(e) {
+      this.currentPage = e;
+      this.getData()
+    },
+    getData() {
+      axios
+        .get(`https://api.musement.com/api/v3/venues/164/activities?limit=6&offset=${this.offset}`, {
+          params: {},
+          headers: {
+            'accept-language': 'it',
+            'content-type': 'application/json',
+            'x-musement-currency': 'EUR',
+            'x-musement-version': '3.4.0'
+          }
+        })
+        .then(response => {
+          this.products = response.data;
+        });
+    }
+  },
+  computed: {
+    offset() {
+      return this.currentPage * this.productsPerPage - this.productsPerPage
     }
   },
   mounted() {
-    axios
-      .get('https://api.musement.com/api/v3/venues/164/activities?limit=6&offset=0', {
-        params: {},
-        headers: {
-          'accept-language': 'it',
-          'content-type': 'application/json',
-          'x-musement-currency': 'EUR',
-          'x-musement-version': '3.4.0'
-        }
-      })
-      .then(response => {
-        this.products = response.data
-      });
+    this.getData()
   }
 };
 </script>
@@ -203,6 +224,12 @@ export default {
   .button--in-cart {
     pointer-events: none;
     background-color: #d9d9d9;
+  }
+  .button--in-wish-list {
+    border: 1px solid #757c8b;
+    & .icon {
+      fill: #757c8b;
+    }
   }
 
 </style>
