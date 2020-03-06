@@ -42,38 +42,31 @@
     display: flex;
     flex-direction: row;
     align-items: flex-end;
+    &__item {
+      height: 25px;
+
+      display: flex;
+      align-items: flex-end;
+      .icon {
+        height: auto;
+        fill: #444A59;
+      }
+    }
+    &__price {
+      margin-right: 5px;
+      font-size: 12px;
+      line-height: 12px;
+    }
+    &__count {
+      margin-left: 10px;
+      .icon {
+        width: 17px;
+      }
+    }
+    &__wishlist-count {
+      margin-left: 10px;
+    }
   }
-
-  .header-bag__item {
-    height: 25px;
-
-    display: flex;
-    align-items: flex-end;
-  }
-
-  .header-bag__item .icon {
-    height: auto;
-    fill: #444A59;
-  }
-
-  .header-bag__price {
-    margin-right: 5px;
-    font-size: 12px;
-    line-height: 12px;
-  }
-
-  .header-bag__count {
-    margin-left: 10px;
-  }
-
-  .header-bag__count .icon {
-    width: 17px;
-  }
-
-  .header-bag__wishlist-count {
-    margin-left: 10px;
-  }
-
   .bag__item-counter {
     width: 13px;
     height: 13px;

@@ -76,111 +76,76 @@
 </script>
 
 <style scoped lang="scss">
-  /* ==========================================================================
-   Product
-   ========================================================================== */
-
   .product {
     display: flex;
     flex-direction: column;
     height: 100%;
 
     background-color: #ffffff;
+    &__image-wrapper {
+      padding: 20px;
+      position: relative;
+      text-align: center;
+    }
+    &__image {
+      max-width: 100%;
+      height: auto;
+    }
+    &__details {
+      display: flex;
+      flex: 1 0 auto;
+      flex-direction: column;
+      padding: 10px 20px 20px;
+      text-align: center;
+    }
+    &__title {
+      padding-bottom: 10px;
+
+      font-family: 'Lato-Bold', sans-serif;
+      font-size: 14px;
+      letter-spacing: 1.37px;
+      text-transform: uppercase;
+    }
+    &__subtitle {
+      padding-bottom: 10px;
+
+      flex-grow: 1;
+
+      font-size: 12px;
+      line-height: 19px;
+      letter-spacing: 0.43px;
+
+      color: #808080;
+    }
+    &__price {
+      padding-bottom: 20px;
+
+      font-family: 'Lato-Bold', sans-serif;
+      font-size: 14px;
+      letter-spacing: 2.33px;
+      &--strike {
+        margin-right: 10px;
+        text-decoration: line-through;
+      }
+      &--discounted {
+        color: #F54B5E;
+      }
+    }
+    &__wishlist-button {
+      width: 35px;
+      height: 35px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    &__add-to-cart {
+      width: 100%;
+      margin-top: 10px;
+    }
   }
-
-  /* ==========================================================================
-     Product Image
-     ========================================================================== */
-
-  .product__image-wrapper {
-    padding: 20px;
-    position: relative;
-    text-align: center;
-  }
-
-  .product__image {
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* ==========================================================================
-     Product Details
-     ========================================================================== */
-
-  .product__details {
-    display: flex;
-    flex: 1 0 auto;
-    flex-direction: column;
-    padding: 10px 20px 20px;
-    text-align: center;
-  }
-
-  /* ==========================================================================
-     Product Titles
-     ========================================================================== */
-
-  .product__title {
-    padding-bottom: 10px;
-
-    font-family: 'Lato-Bold', sans-serif;
-    font-size: 14px;
-    letter-spacing: 1.37px;
-    text-transform: uppercase;
-  }
-
-  .product__subtitle {
-    padding-bottom: 10px;
-
-    flex-grow: 1;
-
-    font-size: 12px;
-    line-height: 19px;
-    letter-spacing: 0.43px;
-
-    color: #808080;
-  }
-
-  /* ==========================================================================
-     Product Prices
-     ========================================================================== */
-
-  .product__price {
-    padding-bottom: 20px;
-
-    font-family: 'Lato-Bold', sans-serif;
-    font-size: 14px;
-    letter-spacing: 2.33px;
-  }
-
-  .product__price--strike {
-    margin-right: 10px;
-    text-decoration: line-through;
-  }
-
-  .product__price--discounted {
-    color: #F54B5E;
-  }
-
-  /* ==========================================================================
-     Product actions
-     ========================================================================== */
-
-  .product__wishlist-button {
-    width: 35px;
-    height: 35px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-
-  .product__add-to-cart {
-    width: 100%;
-    margin-top: 10px;
-  }
-
 </style>
