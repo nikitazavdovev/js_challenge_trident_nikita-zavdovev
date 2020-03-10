@@ -66,6 +66,7 @@ export default {
     }
   },
   mounted() {
+    this.currentPage = parseInt(this.$router.history.current.query.page) || 1;
     this.getData();
   }
 };
