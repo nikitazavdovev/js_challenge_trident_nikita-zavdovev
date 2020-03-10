@@ -51,6 +51,14 @@ export default {
   }
   * {
     box-sizing: border-box;
+    :focus {
+      outline: none;
+    }
+  }
+  #app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
   h1, p, figure {

@@ -26,7 +26,6 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    // todo: optimize state size with used values only
     addProductToCart({ state, commit }, item) {
       if(!state.cart.includes(item)) {
         commit('pushProductToCart', item)
@@ -46,13 +45,19 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    totalCartPrice(state) {
+    getTotalCartPrice(state) {
       if (state.cart.length <= 0) return 0;
 
      return state.cart.reduce((sum, item) => {
         return +sum + +item.retail_price.value;
       }, 0);
-    }
+    },
+    getCartItems(state) {
+      return state.cart;
+    },
+    getWishListItems(state) {
+      return state.wishList;
+    },
   },
   modules: {}
 });

@@ -1,6 +1,8 @@
 <template>
   <header class="header container">
-    <h1 class="page-title">{{title}}</h1>
+    <router-link to="/">
+      <h1 class="page-title">{{title}}</h1>
+    </router-link>
     <HeaderBag />
   </header>
 </template>
@@ -24,6 +26,7 @@
     justify-content: space-between;
     height: 60px;
     align-items: center;
+    position: relative;
 
     text-transform: uppercase;
     background-color: #ffffff;

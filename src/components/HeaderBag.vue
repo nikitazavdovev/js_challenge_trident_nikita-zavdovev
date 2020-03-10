@@ -1,15 +1,15 @@
 <template>
   <aside class="header-bag">
-    <div class="header-bag__item header-bag__count">
-      <div class="header-bag__price">
-        {{totalCartPrice | currency('€')}}
-      </div>
-      <svg class="icon" width="17px" height="18px" viewBox="36 8 17 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <title>Bag Icon</title>
-        <path d="M52.997701,12.8571429 L49.3553365,12.8571429 L49.3553365,8 L39.6423645,8 L39.6423645,12.8571429 L36,12.8571429 L36,25 L52.997701,25 L52.997701,12.8571429 Z M42.0706075,10.4285714 L46.9270935,10.4285714 L46.9270935,12.8571429 L42.0706075,12.8571429 L42.0706075,10.4285714 Z" id="Bag-Icon" stroke="none" fill-rule="evenodd"></path>
-      </svg>
-      <span class="bag__item-counter">{{cartItems.length}}</span>
-    </div>
+    <ShoppingCart class="header-bag__item header-bag__count">
+        <div class="header-bag__price">
+          {{cartPrice | currency('€')}}
+        </div>
+        <svg class="icon" width="17px" height="18px" viewBox="36 8 17 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <title>Bag Icon</title>
+          <path d="M52.997701,12.8571429 L49.3553365,12.8571429 L49.3553365,8 L39.6423645,8 L39.6423645,12.8571429 L36,12.8571429 L36,25 L52.997701,25 L52.997701,12.8571429 Z M42.0706075,10.4285714 L46.9270935,10.4285714 L46.9270935,12.8571429 L42.0706075,12.8571429 L42.0706075,10.4285714 Z" id="Bag-Icon" stroke="none" fill-rule="evenodd"></path>
+        </svg>
+        <span class="bag__item-counter">{{cartItems.length}}</span>
+    </ShoppingCart>
     <div class="header-bag__item header-bag__wishlist-count">
       <svg class="icon" width="20px" height="20px" viewBox="0 6 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>Wishlist Icon</title>
@@ -21,32 +21,33 @@
 </template>
 <script>
   import { mapGetters } from 'vuex';
+  import ShoppingCart from "./ShoppingCart";
 
   export default {
     name: 'HeaderBag',
+    components: {
+      ShoppingCart,
+    },
     computed: {
-      ...mapGetters([
-        'totalCartPrice'
-      ]),
-      cartItems() {
-        return this.$store.state.cart;
-      },
-      wishListItems() {
-        return this.$store.state.wishList;
-      }
-    }
+      ...mapGetters({
+        cartPrice: 'getTotalCartPrice',
+        cartItems: 'getCartItems',
+        wishListItems: 'getWishListItems',
+      })
+    },
   }
 </script>
 <style scoped lang="scss">
   .header-bag {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
+    height: 100%;
     &__item {
-      height: 25px;
+      height: 100%;
 
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       .icon {
         height: auto;
         fill: #444A59;
@@ -59,6 +60,7 @@
     }
     &__count {
       margin-left: 10px;
+      cursor: pointer;
       .icon {
         width: 17px;
       }
@@ -73,9 +75,10 @@
     margin-left: -1px;
 
     display: flex;
-    align-self: flex-start;
+    align-self: center;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 
     font-family: 'Lato-Bold', sans-serif;
     font-size: 8px;
