@@ -96,6 +96,9 @@
   .product {
     display: flex;
     border-bottom: 1px solid rgba(149, 149, 149, 0.15);
+    &__content {
+      flex-grow: 1;
+    }
     &__image {
       margin-right: 10px;
       &_img {
