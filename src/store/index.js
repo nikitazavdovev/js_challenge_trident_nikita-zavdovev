@@ -27,28 +27,28 @@ export default new Vuex.Store({
   },
   actions: {
     addProductToCart({ state, commit }, item) {
-      if(!state.cart.includes(item)) {
-        commit('pushProductToCart', item)
+      if (!state.cart.includes(item)) {
+        commit("pushProductToCart", item);
       }
     },
     removeProductFromCart({ commit }, id) {
-      commit('deleteProductFromCart', id)
+      commit("deleteProductFromCart", id);
     },
 
     addProductToWishList({ state, commit }, item) {
-      if(!state.wishList.includes(item)) {
-        commit('pushProductToWishList', item)
+      if (!state.wishList.includes(item)) {
+        commit("pushProductToWishList", item);
       }
     },
     removeProductFromWishList({ commit }, id) {
-      commit('deleteProductFromWishList', id )
+      commit("deleteProductFromWishList", id);
     }
   },
   getters: {
     getTotalCartPrice(state) {
       if (state.cart.length <= 0) return 0;
 
-     return state.cart.reduce((sum, item) => {
+      return state.cart.reduce((sum, item) => {
         return +sum + +item.retail_price.value;
       }, 0);
     },
@@ -57,7 +57,7 @@ export default new Vuex.Store({
     },
     getWishListItems(state) {
       return state.wishList;
-    },
+    }
   },
   modules: {}
 });
