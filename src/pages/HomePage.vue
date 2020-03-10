@@ -15,7 +15,7 @@
 <script>
 import ProductList from "../components/ProductList";
 import Pagination from "../components/Pagination";
-import axios from "axios";
+import ActivitiesApi from "../api/ActivitiesApi";
 
 export default {
   name: "HomePage",
@@ -36,22 +36,12 @@ export default {
       this.$router.push({ name: "home", query: { page: e } });
     },
     getData() {
-      axios
-        .get(
-          `https://api.musement.com/api/v3/venues/164/activities?limit=${this.productsPerPage}&offset=${this.offset}`,
-          {
-            params: {},
-            headers: {
-              "accept-language": "it",
-              "content-type": "application/json",
-              "x-musement-currency": "EUR",
-              "x-musement-version": "3.4.0"
-            }
-          }
-        )
-        .then(response => {
-          this.products = response.data;
-        });
+      ActivitiesApi.getActivities({
+        limit: this.productsPerPage,
+        offset: this.offset,
+      }).then(response => {
+        this.products = response.data;
+      });
     }
   },
   computed: {
