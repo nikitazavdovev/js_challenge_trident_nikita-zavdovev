@@ -36,16 +36,9 @@ export default {
     font-family: 'Lato-Regular';
     src: url('./assets/fonts/Lato-Regular.ttf') format('ttf');
   }
-  html {
-    height: 100%;
-  }
 
   body {
-    min-height: 100%;
     margin: 0;
-
-    display: flex;
-
     font-family: 'Lato-Regular', sans-serif;
     font-size: 13px;
     text-rendering: optimizeLegibility;
@@ -55,12 +48,6 @@ export default {
 
     color: #444A59;
     background-color: #f8f8f8;
-  }
-  #app {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    flex: 1 0 auto;
   }
   * {
     box-sizing: border-box;
@@ -89,30 +76,36 @@ export default {
     border: 0;
   }
 
-  header,
-  footer {
-    height: 60px;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    text-transform: uppercase;
-    background-color: #ffffff;
-  }
-
   main {
     display: flex;
     flex-direction: row;
+    margin: 10px 0 20px;
     flex: 1 0 auto;
-    margin: 30px 0 20px;
+    @media (min-width: 768px){
+      margin: 30px 0 20px;
+    }
   }
 
   .container {
     width: 100%;
-    max-width: 1240px;
-    padding: 0 40px;
+    padding: 0 20px;
     margin: 0 auto;
+    @media (min-width: 576px) {
+      max-width: 560px;
+    }
+    @media (min-width: 768px){
+      max-width: 720px;
+      padding: 0 40px;
+    }
+    @media (min-width: 992px) {
+      max-width: 960px;
+    }
+    @media (min-width: 1200px) {
+      max-width: 1120px;
+    }
+    @media (min-width: 1366px) {
+      max-width: 1240px;
+    }
   }
 
   .icon {

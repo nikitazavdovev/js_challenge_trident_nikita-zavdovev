@@ -134,12 +134,17 @@
       align-items: center;
     }
     &__item {
-      height: 100%;
-      width: 45px;
+      width: 30px;
+      height: 30px;
       font-family: 'Lato-Bold', sans-serif;
       font-size: 13px;
       letter-spacing: 1.39px;
       text-align: center;
+
+      @media (min-width: 576px) {
+        width: 45px;
+        height: 45px;
+      }
     }
     &__link {
       height: 100%;
@@ -152,8 +157,7 @@
       color: #444A59;
       &.current {
         border-radius: 50%;
-        background: #828a9a;
-        color: #fff;
+        border: 2px solid #444A59;
       }
       &:hover {
         text-decoration: underline;

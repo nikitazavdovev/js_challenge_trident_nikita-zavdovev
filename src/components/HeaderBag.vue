@@ -2,7 +2,7 @@
   <aside class="header-bag">
     <div class="header-bag__item header-bag__count">
       <div class="header-bag__price">
-        {{totalCartPrice}}
+        {{totalCartPrice | currency('€')}}
       </div>
       <svg class="icon" width="17px" height="18px" viewBox="36 8 17 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>Bag Icon</title>

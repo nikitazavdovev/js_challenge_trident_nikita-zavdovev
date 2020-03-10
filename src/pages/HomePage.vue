@@ -1,6 +1,6 @@
 <template>
   <main class="product-page">
-    <div class="container">
+    <div class="container" v-if="products.length">
       <ProductList :products="products"/>
       <Pagination
               :currentPage="currentPage"

@@ -24,12 +24,24 @@
   .product-list {
     display: flex;
     flex: 0 1 auto;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
     margin: 0 -10px;
     &__item {
       padding: 10px;
-      flex: 1 0 33.3333%;
-      max-width: 33.3333%;
+      @media (min-width: 768px){
+        flex: 1 0 50%;
+        /*max-width: 50%;*/
+      }
+      @media (min-width: 1200px) {
+        flex: 1 0 33.3333%;
+        max-width: 33.3333%;
+      }
+    }
+    @media (min-width: 768px){
+      flex-flow: row wrap;
+    }
+    @media (min-width: 1200px) {
+      flex-flow: row wrap;
     }
   }
 

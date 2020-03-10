@@ -22,6 +22,11 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 60px;
+    align-items: center;
+
+    text-transform: uppercase;
+    background-color: #ffffff;
   }
   .page-title {
     font-size: 20px;
