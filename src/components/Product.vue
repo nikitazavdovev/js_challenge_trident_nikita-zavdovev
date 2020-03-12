@@ -1,12 +1,12 @@
 <template>
   <article class="product" itemscope itemtype="http://schema.org/Product">
     <figure class="product__image-wrapper">
-      <img
-        class="product__image"
-        :src="product.cover_image_url"
-        alt="Product"
-        itemprop="image"
-      />
+      <div class="product__image" ref="productImage">
+        <img class="product__image-item"
+             :src="getProductImage()"
+             alt="Product"
+             itemprop="image"/>
+      </div>
       <button
         class="product__wishlist-button button button--round button--wishlist"
         :class="{ 'button--in-wish-list': inWishList }"
@@ -75,6 +75,11 @@ export default {
   props: {
     product: Object
   },
+  data() {
+    return {
+      imageWidth: '',
+    }
+  },
   methods: {
     ...mapActions({
       addToCart: "addProductToCart",
@@ -87,6 +92,9 @@ export default {
       } else {
         this.addToWishList(this.product);
       }
+    },
+    getProductImage() {
+      return `${this.product.cover_image_url}?q=60&fit=crop&w=${this.imageWidth}&h=${this.imageHeight}`
     }
   },
   computed: {
@@ -99,7 +107,13 @@ export default {
       return this.$store.state.wishList.filter(
         item => item.uuid === this.product.uuid
       ).length;
+    },
+    imageHeight() {
+      return this.imageWidth*2/3;
     }
+  },
+  mounted() {
+    this.imageWidth = this.$refs.productImage.clientWidth;
   }
 };
 </script>
@@ -119,6 +133,15 @@ export default {
   &__image {
     max-width: 100%;
     height: auto;
+    min-height: 150px;
+    @media (min-width: 768px) {
+    }
+    @media (min-width: 1200px) {
+    }
+  }
+  &__image-item {
+    width: 100%;
+    height: 100%;
   }
   &__details {
     display: flex;
