@@ -34,7 +34,7 @@ export default {
     padding: 10px;
     @media (min-width: 768px) {
       flex: 1 0 50%;
-      /*max-width: 50%;*/
+      max-width: 50%;
     }
     @media (min-width: 1200px) {
       flex: 1 0 33.3333%;
